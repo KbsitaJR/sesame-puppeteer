@@ -16,7 +16,7 @@ app.get('/sesame/fichar', async (req, res) => {
         '--disable-geolocation', 
         '--use-fake-ui-for-media-stream', 
         '--use-fake-device-for-media-stream', 
-        '--enable-blink-features=IdleDetection'
+        '--enable-blink-features=IdleDetection','--no-sandbox', '--disable-setuid-sandbox'
       ]
     });
     const page = await browser.newPage();
@@ -93,7 +93,7 @@ app.get('/sesame/desfichar', async (req, res) => {
 
     const browser = await puppeteer.launch({
         headless: false, // Ponlo en false para ver lo que ocurre
-        args: ['--use-fake-ui-for-media-stream']
+        args: ['--use-fake-ui-for-media-stream','--no-sandbox', '--disable-setuid-sandbox']
       });
     
       const context = browser.defaultBrowserContext();
