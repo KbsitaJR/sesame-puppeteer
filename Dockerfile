@@ -1,6 +1,6 @@
 FROM node:20-slim
 
-# Instala dependencias para Puppeteer/Chromium
+# Instala dependencias necesarias para Puppeteer/Chromium
 RUN apt-get update && apt-get install -y \
     wget \
     ca-certificates \
@@ -18,6 +18,7 @@ RUN apt-get update && apt-get install -y \
     libxcomposite1 \
     libxdamage1 \
     libxrandr2 \
+    libgbm1 \                 
     xdg-utils \
     --no-install-recommends && \
     apt-get clean && \
@@ -34,4 +35,5 @@ COPY . .
 # Expón el puerto
 EXPOSE 3000
 
+# Comando para iniciar la aplicación
 CMD ["node", "index.js"]
