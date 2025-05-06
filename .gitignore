@@ -1,0 +1,38 @@
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+
+# Logs
+logs
+*.log
+*.pid
+*.seed
+*.pid.lock
+
+# dotenv environment files
+.env
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Docker
+docker-compose.override.yml
+.dockerignore
+
+# Screenshots or temp debug files
+*.png
+*.jpg
+*.jpeg
+*.webp
+debug/
+portal_debug.png
