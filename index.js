@@ -1,5 +1,5 @@
 const express = require('express');
-const puppeteer = require('puppeteer');
+const puppeteer = require('puppeteer-core');
 const dotenv = require('dotenv');
 
 dotenv.config();
@@ -12,6 +12,7 @@ app.get('/sesame/fichar', async (req, res) => {
   try {
     const browser = await puppeteer.launch({
       headless: false,
+      executablePath: '/usr/bin/chromium-browser',
       args: [
         '--disable-geolocation', 
         '--use-fake-ui-for-media-stream', 
@@ -93,6 +94,7 @@ app.get('/sesame/desfichar', async (req, res) => {
 
     const browser = await puppeteer.launch({
         headless: false, // Ponlo en false para ver lo que ocurre
+        executablePath: '/usr/bin/chromium-browser',
         args: ['--use-fake-ui-for-media-stream','--no-sandbox', '--disable-setuid-sandbox']
       });
     
