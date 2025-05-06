@@ -106,7 +106,7 @@ app.get('/sesame/desfichar', async (req, res) => {
     
       // Navega a la web
       await page.goto('https://app.sesametime.com/employee/portal', {
-        waitUntil: 'networkidle0',
+        waitUntil: 'networkidle2',
       });
 
   
