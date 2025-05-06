@@ -11,7 +11,7 @@ const PORT = 3000;
 app.get('/sesame/fichar', async (req, res) => {
   try {
     const browser = await puppeteer.launch({
-      headless: false,
+      headless: 'new',
       args: [
         '--disable-geolocation', 
         '--use-fake-ui-for-media-stream', 
@@ -92,7 +92,7 @@ app.get('/sesame/desfichar', async (req, res) => {
   try {
 
     const browser = await puppeteer.launch({
-        headless: false, // Ponlo en false para ver lo que ocurre
+        headless: 'new', // Ponlo en false para ver lo que ocurre
         args: ['--use-fake-ui-for-media-stream','--no-sandbox', '--disable-setuid-sandbox']
       });
     
