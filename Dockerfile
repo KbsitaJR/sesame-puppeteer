@@ -1,9 +1,8 @@
 FROM node:20-slim
 
-# Instala dependencias necesarias para Puppeteer/Chromium
+# Instala Chromium y dependencias necesarias para Puppeteer
 RUN apt-get update && apt-get install -y \
-    wget \
-    ca-certificates \
+    chromium \
     fonts-liberation \
     libappindicator3-1 \
     libasound2 \
@@ -18,22 +17,28 @@ RUN apt-get update && apt-get install -y \
     libxcomposite1 \
     libxdamage1 \
     libxrandr2 \
-    libgbm1 \                 
+    wget \
+    ca-certificates \
     xdg-utils \
     --no-install-recommends && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
+# Define la ruta del ejecutable de Chromium
+ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium
+
 # Establece el directorio de trabajo
 WORKDIR /app
 
-# Copia los archivos del proyecto
+# Copia archivos del proyecto e instala dependencias
 COPY package*.json ./
 RUN npm install
+
+# Copia el resto del proyecto
 COPY . .
 
 # Expón el puerto
 EXPOSE 3000
 
-# Comando para iniciar la aplicación
+# Inicia la aplicación
 CMD ["node", "index.js"]

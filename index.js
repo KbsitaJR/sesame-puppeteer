@@ -12,11 +12,15 @@ app.get('/sesame/fichar', async (req, res) => {
   try {
     const browser = await puppeteer.launch({
       headless: 'new',
+      executablePath: '/usr/bin/chromium',
       args: [
-        '--disable-geolocation', 
-        '--use-fake-ui-for-media-stream', 
-        '--use-fake-device-for-media-stream', 
-        '--enable-blink-features=IdleDetection','--no-sandbox', '--disable-setuid-sandbox'
+        '--no-sandbox',
+        '--disable-setuid-sandbox',
+        '--disable-dev-shm-usage',
+        '--disable-accelerated-2d-canvas',
+        '--disable-gpu',
+        '--no-zygote',
+        '--single-process'
       ]
     });
     const page = await browser.newPage();
@@ -92,8 +96,17 @@ app.get('/sesame/desfichar', async (req, res) => {
   try {
 
     const browser = await puppeteer.launch({
-        headless: 'new', // Ponlo en false para ver lo que ocurre
-        args: ['--use-fake-ui-for-media-stream','--no-sandbox', '--disable-setuid-sandbox']
+        headless: 'new', 
+        executablePath: '/usr/bin/chromium',
+        args: [
+          '--no-sandbox',
+          '--disable-setuid-sandbox',
+          '--disable-dev-shm-usage',
+          '--disable-accelerated-2d-canvas',
+          '--disable-gpu',
+          '--no-zygote',
+          '--single-process'
+        ]
       });
     
       const context = browser.defaultBrowserContext();
